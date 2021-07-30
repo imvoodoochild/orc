@@ -8,6 +8,10 @@
 	<script src="/js/semantic.min.js"></script>
 </head>
 <body>
+	<header>
+		@include('components.navbar')
+	</header>
+
 	@yield('content')
 </body>
 </html>
