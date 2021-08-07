@@ -1,0 +1,21 @@
+.user-panel {
+	height: 100%;
+    background: #dee2e6;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.remove-top-margin {
+	margin-top:  0 !important;
+}
+
+.add-padding {
+	padding: 1rem 1rem 1rem 2rem !important;
+}
+
+.list-border {
+	border: 1px solid #dee2e6;
+    padding: 1rem !important;
+}

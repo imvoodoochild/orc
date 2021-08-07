@@ -5,12 +5,11 @@
 	<title>{{env('APP_NAME')}} : @yield('title')</title>
 
 	<link rel="stylesheet" href="/css/semantic-ui.min.css">
+	<link rel="stylesheet" href="/css/app.css">
 	<script src="/js/semantic.min.js"></script>
 </head>
 <body>
-	<header>
-		@include('components.navbar')
-	</header>
+	@include('components.navbar')
 
 	@yield('content')
 </body>
