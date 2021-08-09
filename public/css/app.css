@@ -7,15 +7,6 @@
 	height: 100%;
 }
 
-.remove-top-margin {
-	margin-top:  0 !important;
-}
-
 .add-padding {
 	padding: 1rem 1rem 1rem 2rem !important;
-}
-
-.list-border {
-	border: 1px solid #bfc0c0;
-    padding: 1rem !important;
 }

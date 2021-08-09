@@ -37,36 +37,39 @@ Dashboard
           </div>
         </div>
         <div class="fifteen wide column">
-          <h3>Projects</h3>
-          <div class="ui middle aligned divided list list-border">
-            <div class="item">
-              <div class="right floated content">
-                <div class="ui button">Edit</div>
-                <div class="ui button">Build</div>
-              </div>
-              <div class="content">
-                Project1
-              </div>
-            </div>
-            <div class="item">
-              <div class="right floated content">
-                <div class="ui button">Edit</div>
-                <div class="ui button">Build</div>
-              </div>
-              <div class="content">
-                Project2
-              </div>
-            </div>
-            <div class="item">
-              <div class="right floated content">
-                <div class="ui button">Edit</div>
-                <div class="ui button">Build</div>
-              </div>
-              <div class="content">
-                Project3
-              </div>
-            </div>
-          </div>
+          <table class="ui table">
+            <thead>
+              <tr><th class="six wide">Projects</th>
+              <th class="six wide">Status</th>
+              <th class="four wide"></th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td>Project1</td>
+                <td>Stopped</td>
+                <td class="right aligned">
+                  <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                  <div class="ui button">Build</div>
+                </td>
+              </tr>
+              <tr>
+                <td>Project2</td>
+                <td>Stopped</td>
+                <td class="right aligned">
+                  <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                  <div class="ui button">Build</div>
+                </td>
+              </tr>
+              <tr>
+                <td>Project3</td>
+                <td>Stopped</td>
+                <td class="right aligned">
+                  <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                  <div class="ui button">Build</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -112,6 +115,50 @@ Dashboard
       </div>
       <button type="submit" class="ui positive right labeled icon button" onclick="document.getElementById('add-project').submit();">
         Add
+        <i class="checkmark icon"></i>
+      </button>
+    </div>
+
+    <!-- Edit project modal -->
+    <div class="ui modal edit-project">
+  <i class="close icon"></i>
+  <div class="header">
+    Edit Project
+  </div>
+    <div class="content">
+      <form class="ui form" action="/project" method="post" id="edit-project" enctype="multipart/form-data">
+        <div class="field">
+          <label>Project title</label>
+          <input type="text" name="title">
+        </div>
+        <div class="field">
+          <label>Build type</label>
+          <input type="text" name="type">
+        </div>
+        <div class="field">
+          <label>Git repository link</label>
+          <input type="text" name="link">
+        </div>
+        <div class="field">
+          <label>Project branch</label>
+          <input type="text" name="branch">
+        </div>
+         <div class="field">
+          <label>Domain name</label>
+          <input type="text" name="name">
+        </div>
+         <div class="field">
+          <label>SSH key</label>
+          <input type="text" name="key">
+        </div>
+      </form>
+    </div>
+    <div class="actions">
+      <div class="ui black deny button">
+        Cancel
+      </div>
+      <button type="submit" class="ui positive right labeled icon button" onclick="document.getElementById('edit-project').submit();">
+        Save
         <i class="checkmark icon"></i>
       </button>
     </div>
