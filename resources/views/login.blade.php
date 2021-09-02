@@ -11,7 +11,7 @@ Login
   <div class="row">
     <div class="column center-column">
       <form class="ui large form">
-        <div class="ui stacked segment">          
+        <div class="ui segment">
           <h1 class="ui dividing header centered">
             Log-in to Orc
           </h1>

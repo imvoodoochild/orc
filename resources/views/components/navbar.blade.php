@@ -1,5 +1,5 @@
 <!-- navbar contents -->
-<div class="ui secondary pointing menu">
+<div class="ui secondary pointing menu remove-margin">
 	<div class="header item">
 	Orc
 	</div>

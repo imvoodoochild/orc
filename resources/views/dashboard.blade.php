@@ -9,78 +9,185 @@ Dashboard
 <!-- Dashboard content -->
 <div class="ui grid">
   <div class="row">
-  <div class="three wide column user-panel add-padding">
-    <h2 class="ui center aligned icon header">
-      <i class="circular user icon"></i>
-      Username
-    </h2>
-    <div class="ui fluid card">
-      <div class="content">
-        <div class="header">Name</div>
-        <div class="meta">Developer</div>
-        <div class="description">
-          Bank
+    <div class="three wide column user-panel add-padding">
+      <h2 class="ui center aligned icon header">
+        <i class="circular user icon"></i>
+        Username
+      </h2>
+      <div class="ui fluid card">
+        <div class="content">
+          <div class="header">Name</div>
+          <div class="meta">Developer</div>
+          <div class="description">
+            Bank
+          </div>
         </div>
+        <div class="ui bottom attached button" tabindex="0" onclick="$('.ui.modal.edit-profile').modal('show')">Edit</div>
       </div>
-      <div class="ui bottom attached button" tabindex="0" onclick="$('.ui.modal.edit-profile').modal('show')">Edit</div>
     </div>
-  </div>
-  
-  <div class="thirteen wide column">
-    <div class="ui centered grid">
-      <div class="two wide column">
-        <button class="ui labeled icon button" onclick="$('.ui.modal.add-project').modal('show')">
-          <i class="plus icon"></i>
-          Add
-        </button>
-      </div>
-      <div class="thirteen wide column">
-        <div class="ui fluid action input">
-          <input type="text" placeholder="Search...">
-          <button class="ui labeled icon button">
-            <i class="search icon"></i>
-            Search
+
+    <div class="thirteen wide column add-padding">
+      <div class="ui centered grid">
+        <div class="two wide column">
+          <button class="ui labeled icon button" onclick="$('.ui.modal.add-project').modal('show')">
+            <i class="plus icon"></i>
+            Add
           </button>
         </div>
-      </div>
-      <div class="fifteen wide column">
-        <table class="ui table">
-          <thead>
-            <tr><th class="six wide">Projects</th>
-            <th class="six wide">Status</th>
-            <th class="four wide"></th>
-          </tr></thead>
-          <tbody>
-            <tr>
-              <td>Project1</td>
-              <td class="negative">Stopped</td>
-              <td class="right aligned">
-                <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
-                <div class="ui button">Run</div>
-              </td>
-            </tr>
-            <tr>
-              <td>Project2</td>
-              <td class="positive">Running</td>
-              <td class="right aligned">
-                <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
-                <div class="ui button">Run</div>
-              </td>
-            </tr>
-            <tr>
-              <td>Project3</td>
-              <td class="negative">Stopped</td>
-              <td class="right aligned">
-                <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
-                <div class="ui button">Run</div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="thirteen wide column">
+          <div class="ui fluid action input">
+            <input type="text" placeholder="Search...">
+            <button class="ui labeled icon button">
+              <i class="search icon"></i>
+              Search
+            </button>
+          </div>
+        </div>
+        <div class="fifteen wide column">
+          <table class="ui table">
+            <thead>
+              <tr><th class="six wide">Projects</th>
+              <th class="six wide">Status</th>
+              <th class="four wide"></th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td>Project1</td>
+                <td class="negative">Stopped</td>
+                <td class="right aligned">
+                  <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                  <div class="ui button">Run</div>
+                </td>
+              </tr>
+              <tr>
+                <td>Project2</td>
+                <td class="positive">Running</td>
+                <td class="right aligned">
+                  <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                  <div class="ui button">Run</div>
+                </td>
+              </tr>
+              <tr>
+                <td>Project3</td>
+                <td class="negative">Stopped</td>
+                <td class="right aligned">
+                  <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                  <div class="ui button">Run</div>
+                </td>
+              </tr>
+              <tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr><tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr><tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr><tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr><tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr><tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Project3</td>
+                  <td class="negative">Stopped</td>
+                  <td class="right aligned">
+                      <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
+                      <div class="ui button">Run</div>
+                  </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <!-- Add project modal -->
@@ -168,7 +275,7 @@ Dashboard
         <button type="submit" class="ui positive right labeled icon button" onclick="document.getElementById('edit-project').submit();">
           Save
           <i class="checkmark icon"></i>
-        </button>        
+        </button>
         <!-- <div class="ui divider"></div>
         <div class="ui bottom attached button" tabindex="0">Stop Project</div> -->
         <div class="ui divider"></div>
