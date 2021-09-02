@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +22,8 @@ use App\Http\Controllers\DashboardController;
 // });
 
 Route::get('/doc', [DashboardController::class, "getDoc"]);
-Route::get('/', [DashboardController::class, "getDashboard"]);
+Route::get('/', [LoginController::class, "getIndex"]);
+Route::get('/login', [LoginController::class, "getLogin"]);
+Route::get('/dashboard', [DashboardController::class, "getDashboard"]);
+Route::get('/settings', [SettingsController::class, "getSettings"]);
+Route::get('/register', [RegisterController::class, "getRegister"]);

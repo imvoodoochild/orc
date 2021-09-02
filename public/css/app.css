@@ -1,3 +1,11 @@
+html, body {
+	height: 100%;
+}
+
+footer {
+    width: 100%;
+}
+
 .user-panel {
 	height: 100%;
     background: #bfc0c0;
@@ -10,3 +18,32 @@
 .add-padding {
 	padding: 1rem 1rem 1rem 2rem !important;
 }
+
+.center-column {
+	max-width: 450px;
+}
+
+.top-margin {
+	margin-top: 5em !important;
+}
+footer { 
+	position: relative;
+  bottom: 0;
+  width: 100%;
+}
+/*  
+@media (min-height: 400px) {
+  footer { 
+  	position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+@media (min-height: 500px) {
+  footer { 
+  	position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+}*/

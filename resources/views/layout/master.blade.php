@@ -11,8 +11,12 @@
 	<script src="/js/semantic.min.js"></script>
 </head>
 <body>
-	@include('components.navbar')
+	<div class="ui fluid container">
+		@include('components.navbar')
 
-	@yield('content')
+		@yield('content')
+
+		<!-- @include('components.footer') -->
+	</div>
 </body>
 </html>
