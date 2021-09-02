@@ -4,7 +4,7 @@
 	Orc
 	</div>
 	<div class="right menu">
-<!--		<a class="item active">
+		<a class="item active">
 			Dashboard
 		</a>
 		<a class="item">
@@ -12,6 +12,6 @@
 		</a>
 		<a class="item">
 			Logout
-		</a> -->
+		</a>
 	</div>
 </div>
