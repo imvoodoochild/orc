@@ -8,7 +8,10 @@
 			Dashboard
 		</a>
 		<a class="item">
-			Settings
+			Account
+		</a>
+		<a class="item">
+			Users
 		</a>
 		<a class="item">
 			Logout

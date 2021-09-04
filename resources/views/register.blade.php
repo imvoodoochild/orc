@@ -7,10 +7,10 @@ Register
 @section('content')
 
 <!-- register content -->
-<div class="ui grid top-margin">
+<div class="ui grid add-padding">
   <div class="row">
     <div class="five wide column"></div>
-    <div class="six wide column">      
+    <div class="six wide column add-padding">      
       <form class="ui large form">
         <div class="ui stacked segment">
           <h2 class="ui dividing header centered">
@@ -35,6 +35,10 @@ Register
               <label>Job title</label>
               <input type="text" name="jobtitle">
             </div> 
+          </div>
+          <div class="field">
+          <label>Email</label>
+            <input type="text" name="email">
           </div>          
           <div class="field">
           <label>Username</label>
