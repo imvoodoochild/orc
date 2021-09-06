@@ -13,11 +13,11 @@ Account
     <div class="six wide column">
       <h2 class="ui center aligned icon header">
         <i class="circular user icon"></i>
-        Username
+        Name
       </h2>
       <div class="ui fluid card">
         <div class="content">
-          <div class="header">Name</div>
+          <div class="header">Email</div>
           <div class="meta">Developer</div>
           <div class="description">
             Bank
