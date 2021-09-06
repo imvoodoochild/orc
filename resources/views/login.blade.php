@@ -10,7 +10,8 @@ Login
 <div class="ui center aligned grid top-margin">
   <div class="row">
     <div class="column center-column">
-      <form class="ui large form">
+      <form class="ui large form" action="/login" method="post">
+        @csrf
         <div class="ui segment">
           <h1 class="ui dividing header centered">
             Log-in to Orc
@@ -18,7 +19,7 @@ Login
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <input type="text" name="username" placeholder="Username">
+              <input type="text" name="email" placeholder="Email">
             </div>
           </div>
           <div class="field">
@@ -27,7 +28,7 @@ Login
               <input type="password" name="password" placeholder="Password">
             </div>
           </div>
-          <div class="ui large submit button fluid" tabindex="0">Login</div>
+          <button type="submit" class="ui large submit button fluid" tabindex="0">Login</button>
         </div>
 
         <div class="ui error message"></div>

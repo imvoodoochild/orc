@@ -24,10 +24,15 @@ use App\Http\Controllers\RegisterController;
 //     return view('welcome', ['title' => 'Orc']);
 // });
 
-Route::get('/doc', [DashboardController::class, "getDoc"]);
 Route::get('/', [HomeController::class, "getHome"]);
-Route::get('/login', [LoginController::class, "getLogin"]);
+Route::get('/login', [LoginController::class, "getLogin"])->name('login');
+Route::post('/login', [LoginController::class, "doLogin"]);
+Route::get('/logout', [LoginController::class, "doLogout"]);
 Route::get('/register', [RegisterController::class, "getRegister"]);
-Route::get('/dashboard', [DashboardController::class, "getDashboard"]);
-Route::get('/account', [AccountController::class, "getAccount"]);
-Route::get('/users', [UsersController::class, "getUsers"]);
+
+Route::middleware(['auth'])->group(function () {
+	Route::get('/doc', [DashboardController::class, "getDoc"]);
+	Route::get('/dashboard', [DashboardController::class, "getDashboard"]);
+	Route::get('/account', [AccountController::class, "getAccount"]);
+	Route::get('/users', [UsersController::class, "getUsers"]);
+});
