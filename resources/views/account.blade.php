@@ -17,10 +17,10 @@ Account
       </h2>
       <div class="ui fluid card">
         <div class="content">
-          <div class="header">Email</div>
-          <div class="meta">Developer</div>
+          <div class="header">Job Title</div>
+          <div class="meta">Workplace</div>
           <div class="description">
-            Bank
+            Email
           </div>
         </div>
         <div class="ui medium bottom attached button" tabindex="0" onclick="$('.ui.modal.edit-profile').modal('show')">Edit</div>
@@ -70,7 +70,7 @@ Account
         <input type="text" name="type">
       </div>
       <div class="field">
-        <label>Job Position</label>
+        <label>Job Title</label>
         <input type="text" name="link">
       </div>
     </form>

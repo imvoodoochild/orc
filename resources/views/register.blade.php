@@ -7,11 +7,12 @@ Register
 @section('content')
 
 <!-- register content -->
-<div class="ui grid add-padding">
+<div class="ui grid top-margin">
   <div class="row">
     <div class="five wide column"></div>
     <div class="six wide column add-padding">      
-      <form class="ui large form">
+      <form class="ui large form" action="/register" method="post">
+        @csrf
         <div class="ui stacked segment">
           <h2 class="ui dividing header centered">
             Registration
@@ -39,20 +40,18 @@ Register
           <div class="field">
           <label>Email</label>
             <input type="text" name="email">
-          </div>          
-          <div class="field">
-          <label>Username</label>
-            <input type="text" name="username">
           </div>
-          <div class="field">
-            <label>Password</label>
-            <input type="password">
+          <div class="two fields">
+            <div class="field">
+              <label>Password</label>
+              <input type="password" name="password">
+            </div>
+            <div class="field">
+              <label>Confirm password</label>
+              <input type="password" name="confirmpassword">
+            </div>
           </div>
-          <div class="field">
-            <label>Confirm password</label>
-            <input type="password">
-          </div>
-          <div class="ui button fluid" tabindex="0">Register</div>
+          <button type="submit" class="ui button fluid" tabindex="0">Register</button>
         </div>
       </form>
     </div>

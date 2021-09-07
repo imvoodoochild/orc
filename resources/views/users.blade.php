@@ -28,11 +28,10 @@ Users
             <table class="ui celled definition table">
               <thead>
                 <tr>
-                  <th></th>
-                  <th>Username</th>
+                  <th></th>                  
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Job Position</th>
+                  <th>Job Title</th>
                 </tr>
               </thead>
               <tbody>
@@ -43,7 +42,6 @@ Users
                       <button class="ui button"><i class="cancel icon"></i></button>
                     </div>
                   </td>
-                  <td>someone</td>
                   <td>John Lilki</td>
                   <td>jhlilk22@yahoo.com</td>
                   <td>Developer</td>
@@ -55,7 +53,6 @@ Users
                       <button class="ui button"><i class="cancel icon"></i></button>
                     </div>
                   </td>
-                  <td>something</td>
                   <td>Jamie Harington</td>
                   <td>jamieharingonton@yahoo.com</td>
                   <td>Developer</td>
@@ -67,7 +64,6 @@ Users
                       <button class="ui button"><i class="cancel icon"></i></button>
                     </div>
                   </td>
-                  <td>somebody</td>
                   <td>Jill Lewis</td>
                   <td>jilsewris22@yahoo.com</td>
                   <td>Tester</td>
@@ -86,7 +82,8 @@ Users
     Add User
   </div>
     <div class="content">
-      <form class="ui form" action="/user" method="post" id="add-user" enctype="multipart/form-data">
+      <form class="ui form" action="/users" method="post" id="add-user" enctype="multipart/form-data">
+        @csrf
         <div class="two fields">
             <div class="field">
               <label>First name</label>
@@ -98,24 +95,22 @@ Users
             </div> 
           </div>
           <div class="field">
-          <label>Job position</label>
-            <input type="text" name="jobposition">
+          <label>Job title</label>
+            <input type="text" name="jobtitle">
           </div>
           <div class="field">
           <label>Email</label>
             <input type="text" name="email">
-          </div>          
-          <div class="field">
-          <label>Username</label>
-            <input type="text" name="username">
           </div>
-          <div class="field">
-            <label>Password</label>
-            <input type="password">
-          </div>
-          <div class="field">
-            <label>Confirm password</label>
-            <input type="password">
+          <div class="two fields">
+            <div class="field">
+              <label>Password</label>
+              <input type="password" name="password">
+            </div>
+            <div class="field">
+              <label>Confirm password</label>
+              <input type="password" name="confirmpassword">
+            </div>
           </div>
       </form>
     </div>
@@ -148,13 +143,9 @@ Users
             </div> 
           </div>
           <div class="field">
-          <label>Job position</label>
-            <input type="text" name="jobposition">
-          </div>
-          <div class="field">
-          <label>Email</label>
-            <input type="text" name="email">
-        </div>          
+          <label>Job title</label>
+            <input type="text" name="jobtitle">
+          </div>         
       </form>
     </div>
     <div class="actions">

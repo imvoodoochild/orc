@@ -25,14 +25,20 @@ use App\Http\Controllers\RegisterController;
 // });
 
 Route::get('/', [HomeController::class, "getHome"]);
+
 Route::get('/login', [LoginController::class, "getLogin"])->name('login');
 Route::post('/login', [LoginController::class, "doLogin"]);
+
 Route::get('/logout', [LoginController::class, "doLogout"]);
-Route::get('/register', [RegisterController::class, "getRegister"]);
+
+Route::get('/register', [RegisterController::class, "getRegister"])->name('register');
+Route::post('/register', [RegisterController::class, "doRegister"]);
 
 Route::middleware(['auth'])->group(function () {
 	Route::get('/doc', [DashboardController::class, "getDoc"]);
 	Route::get('/dashboard', [DashboardController::class, "getDashboard"]);
 	Route::get('/account', [AccountController::class, "getAccount"]);
-	Route::get('/users', [UsersController::class, "getUsers"]);
+
+	Route::get('/users', [UsersController::class, "getUsers"])->name('users');
+	Route::post('/users', [UsersController::class, "addUsers"]);
 });
