@@ -11,75 +11,79 @@ Account
   <div class="row">
     <div class="five wide column"></div>
     <div class="six wide column">
-      <h2 class="ui center aligned icon header">
-        <i class="circular user icon"></i>
-        Name
-      </h2>
       <div class="ui fluid card">
         <div class="content">
-          <div class="header">Job Title</div>
-          <div class="meta">Workplace</div>
+          <h3 class="ui icon header">
+            <i class="small user circle icon"></i>
+            {{$user->firstname}} {{$user->lastname}}
+          </h3>
+          <div class="ui divider"></div>
+          <div class="header">{{$user->jobtitle}}</div>
+          <div class="meta">{{$user->workplace}}</div>
           <div class="description">
-            Email
-          </div>
+            {{$user->email}}
+          </div>        
         </div>
-        <div class="ui medium bottom attached button" tabindex="0" onclick="$('.ui.modal.edit-profile').modal('show')">Edit</div>
+        <div class="ui bottom attached secondary button" tabindex="0" onclick="$('.ui.modal.edit-account').modal('show')">Edit</div>
       </div>
     </div>
     <div class="five wide column"></div>
   </div>
+  
   <div class="row">
     <div class="five wide column"></div>
     <div class="six wide column">
-      <form class="ui large form">
+      <form class="ui form" action="/account/password" method="post">
+        @csrf
         <h3 class="ui dividing header centered">
         Change Password
         </h3>
         <div class="field">
           <label>Old password</label>
-          <input type="password">
+          <input type="password" name="oldpassword" required>
         </div>
         <div class="field">
           <label>New password</label>
-          <input type="password">
+          <input type="password" name="newpassword" required>
         </div>
         <div class="field">
           <label>Confirm password</label>
-          <input type="password">
+          <input type="password" name="confirmpassword" required>
         </div>
-        <div class="ui fluid button" tabindex="0">Submit</div>
+        <button type="submit" class="ui fluid primary button" tabindex="0">Update</button>
       </form> 
     </div>
   </div>
 </div>
 
-<!-- Edit profile modal -->
-  <div class="ui modal edit-profile">
+<!-- Edit account modal -->
+  <div class="ui modal edit-account">
   <i class="close icon"></i>
   <div class="header">
-    Edit Profile
+    Edit account
   </div>
   <div class="content">
-    <form class="ui form" action="/profile" method="post" id="edit-profile" enctype="multipart/form-data">
+    <form class="ui form" action="/user/{{$user->id}}" method="post" id="edit-account" enctype="multipart/form-data">
+      @csrf
       <div class="field">
         <label>First Name</label>
-        <input type="text" name="title">
+        <input type="text" name="firstname" value="{{$user->firstname}}"/>
       </div>
       <div class="field">
         <label>Last Name</label>
-        <input type="text" name="type">
+        <input type="text" name="lastname" value="{{$user->lastname}}"/>
       </div>
       <div class="field">
         <label>Job Title</label>
-        <input type="text" name="link">
+        <input type="text" name="jobtitle" value="{{$user->jobtitle}}"/>
       </div>
     </form>
   </div>
   <div class="actions">
-    <div class="ui black deny button">
+    <div class="ui negative deny button">
       Cancel
     </div>
-      <button type="submit" class="ui positive button" onclick="document.getElementById('add-project').submit();">
+      <button type="submit" class="ui positive button" onclick="document.getElementById('edit-account').submit();">
         Save
       </button>
     </div>

@@ -3,11 +3,58 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\ModelTest\Project;
+use App\Models\Project;
+Use Auth;
 
 class DashboardController extends Controller
 {
     public function getDashboard() {
-        return view('dashboard');
+        $getProjects = Project::where("user_id", Auth::User()->id)->get();
+        return view('dashboard')->with("projects", $getProjects);
+    }
+
+    public function addProject(Request $request)
+    {
+        $project = new Project;
+        $project->user_id = Auth::User()->id;
+        $project->title = $request->title;
+        $project->build = $request->build;
+        $project->link = $request->link;
+        $project->branch = $request->branch;
+        $project->domain = $request->domain;
+        $project->key = $request->key;
+        $project->status = 'Stopped';
+        $project->save();
+
+        return redirect('/dashboard');
+    }
+
+    public function getProject(Request $request)
+    {
+        $project = Project::where("id", $request->id)->first();
+        
+        return view('editProject')->with("project", $project);
+    }
+
+    public function editProject(Request $request)
+    {
+        $project = Project::where("id", $request->id)->first();
+
+        $project->title = $request->title;
+        $project->build = $request->build;
+        $project->link = $request->link;
+        $project->branch = $request->branch;
+        $project->domain = $request->domain;
+        $project->key = $request->key;
+        $project->status = 'Stopped';
+        $project->update();
+
+        return redirect('/dashboard');
+    }
+
+    public function removeProject(Request $request)
+    {
+        $project = Project::where("id", $request->id)->delete();
+        return redirect('/dashboard');
     }
 }

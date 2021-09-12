@@ -82,7 +82,7 @@ Users
     Add User
   </div>
     <div class="content">
-      <form class="ui form" action="/users" method="post" id="add-user" enctype="multipart/form-data">
+      <form class="ui form" action="/user" method="post" id="add-user" enctype="multipart/form-data">
         @csrf
         <div class="two fields">
             <div class="field">
@@ -131,7 +131,7 @@ Users
     Edit User
   </div>
     <div class="content">
-      <form class="ui form" action="/user" method="post" id="edit-user" enctype="multipart/form-data">
+      <form class="ui form" action="/users" method="post" id="edit-user" enctype="multipart/form-data">
         <div class="two fields">
             <div class="field">
               <label>First name</label>

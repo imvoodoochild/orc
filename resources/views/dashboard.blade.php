@@ -34,42 +34,28 @@ Dashboard
             <th class="four wide"></th>
           </tr></thead>
           <tbody>
-            <tr>
-              <td>Project1</td>
-              <td class="negative">Stopped</td>
-              <td class="right aligned">
-                <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
-                <div class="ui buttons">
-                  <button class="ui button">Stop</button>
-                  <div class="or"></div>
-                  <button class="ui button">Run</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Project2</td>
-              <td class="positive">Running</td>
-              <td class="right aligned">
-                <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
-                <div class="ui buttons">
-                  <button class="ui button">Stop</button>
-                  <div class="or"></div>
-                  <button class="ui button">Run</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>Project3</td>
-              <td class="negative">Stopped</td>
-              <td class="right aligned">
-                <div class="ui button" onclick="$('.ui.modal.edit-project').modal('show')">Edit</div>
-                <div class="ui buttons">
-                  <button class="ui button">Stop</button>
-                  <div class="or"></div>
-                  <button class="ui button">Run</button>
-                </div>
-              </td>
-            </tr>
+            @foreach ($projects as $project)
+              <tr>
+                <td>{{$project->title}}</td>
+                <td class="negative">{{$project->status}}</td>
+                <td class="right aligned">
+                  <a href="/project/{{$project->id}}" class="ui primary button">Edit</a>
+                  <div class="ui buttons">
+                    <form class="ui" method="post" action="/project/{{$project->id}}" onsubmit="return confirm('Do you really want to remove the project: {{$project->title}}?');">
+                      @csrf
+                      <input type="hidden" name="_method" value="delete" />
+                      <button type="submit" class="ui secondary button">Remove</button>
+                    </form>
+                  </div>
+                  <div class="ui buttons">
+                    <button class="ui negative button">Stop</button>
+                    <div class="or"></div>
+                    <button class="ui positive button">Run</button>
+                  </div>
+                </td>
+              </tr>
+            @endforeach          
+            
           </tbody>
         </table>
       </div>
@@ -83,14 +69,15 @@ Dashboard
     Add Project
   </div>
     <div class="content">
-      <form class="ui form" action="/project" method="post" id="add-project" enctype="multipart/form-data">
+      <form class="ui form" action="/dashboard" method="post" id="add-project" enctype="multipart/form-data">
+        @csrf
         <div class="field">
           <label>Project title</label>
           <input type="text" name="title">
         </div>
         <div class="field">
           <label>Build type</label>
-          <input type="text" name="type">
+          <input type="text" name="build">
         </div>
         <div class="field">
           <label>Git repository link</label>
@@ -102,7 +89,7 @@ Dashboard
         </div>
          <div class="field">
           <label>Domain name</label>
-          <input type="text" name="name">
+          <input type="text" name="domain">
         </div>
          <div class="field">
           <label>SSH key</label>
@@ -118,54 +105,6 @@ Dashboard
         Add
         <i class="checkmark icon"></i>
       </button>
-    </div>
-  </div>
-
-  <!-- Edit project modal -->
-  <div class="ui modal edit-project">
-  <i class="close icon"></i>
-  <div class="header">
-    Edit Project
-  </div>
-    <div class="content">
-      <form class="ui form" action="/edit" method="post" id="edit-project" enctype="multipart/form-data">
-        <div class="field">
-          <label>Project title</label>
-          <input type="text" name="title">
-        </div>
-        <div class="field">
-          <label>Build type</label>
-          <input type="text" name="type">
-        </div>
-        <div class="field">
-          <label>Git repository link</label>
-          <input type="text" name="link">
-        </div>
-        <div class="field">
-          <label>Project branch</label>
-          <input type="text" name="branch">
-        </div>
-         <div class="field">
-          <label>Domain name</label>
-          <input type="text" name="name">
-        </div>
-         <div class="field">
-          <label>SSH key</label>
-          <input type="text" name="key">
-        </div>
-      </form>
-    </div>
-    <div class="actions">
-      <div class="ui black deny button">
-        Cancel
-      </div>
-      <button type="submit" class="ui positive button" onclick="document.getElementById('edit-project').submit();">
-        Save
-      </button>
-      <!-- <div class="ui divider"></div>
-      <div class="ui bottom attached button" tabindex="0">Stop Project</div> -->
-      <div class="ui divider"></div>
-      <div class="negative ui bottom attached button" tabindex="0">Remove Project</div>
     </div>
   </div>
 

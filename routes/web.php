@@ -36,9 +36,20 @@ Route::post('/register', [RegisterController::class, "doRegister"]);
 
 Route::middleware(['auth'])->group(function () {
 	Route::get('/doc', [DashboardController::class, "getDoc"]);
+
 	Route::get('/dashboard', [DashboardController::class, "getDashboard"]);
+	Route::post('/dashboard', [DashboardController::class, "addProject"]);
+
+	Route::get('/project/{id}', [DashboardController::class, "getProject"]);
+	Route::post('/project/{id}', [DashboardController::class, "editProject"]);
+	Route::delete('/project/{id}', [DashboardController::class, "removeProject"]);
+
+	Route::get('/user/{id}', [AccountController::class, "getUser"]);
+	Route::post('/user/{id}', [AccountController::class, "editUser"]);
+
 	Route::get('/account', [AccountController::class, "getAccount"]);
+	Route::post('/account/password', [AccountController::class, "changePassword"]);
 
 	Route::get('/users', [UsersController::class, "getUsers"])->name('users');
-	Route::post('/users', [UsersController::class, "addUsers"]);
+	Route::post('/user', [UsersController::class, "addUser"]);
 });

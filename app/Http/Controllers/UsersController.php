@@ -14,7 +14,7 @@ class UsersController extends Controller
         return view('users');
     }
 
-    public function addUsers(Request $request)
+    public function addUser(Request $request)
     {
         if ($request->password != $request->confirmpassword){
             return redirect('/users');
@@ -32,4 +32,5 @@ class UsersController extends Controller
 
         return redirect('/users');
     }
+    
 }
