@@ -44,12 +44,14 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/project/{id}', [DashboardController::class, "editProject"]);
 	Route::delete('/project/{id}', [DashboardController::class, "removeProject"]);
 
-	Route::get('/user/{id}', [AccountController::class, "getUser"]);
-	Route::post('/user/{id}', [AccountController::class, "editUser"]);
+	Route::get('/account/{id}', [AccountController::class, "getUser"]);
+	Route::post('/account/{id}', [AccountController::class, "editAccount"]);
 
 	Route::get('/account', [AccountController::class, "getAccount"]);
 	Route::post('/account/password', [AccountController::class, "changePassword"]);
 
 	Route::get('/users', [UsersController::class, "getUsers"])->name('users');
 	Route::post('/user', [UsersController::class, "addUser"]);
+	Route::post('/user/{id}', [UsersController::class, "editUser"]);
+
 });

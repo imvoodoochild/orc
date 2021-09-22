@@ -22,17 +22,34 @@ Account
           <div class="meta">{{$user->workplace}}</div>
           <div class="description">
             {{$user->email}}
-          </div>        
+          </div>
         </div>
         <div class="ui bottom attached secondary button" tabindex="0" onclick="$('.ui.modal.edit-account').modal('show')">Edit</div>
       </div>
     </div>
     <div class="five wide column"></div>
   </div>
-  
+
   <div class="row">
     <div class="five wide column"></div>
     <div class="six wide column">
+        @isset($error)
+        <div class="ui negative message">
+          <div class="header">
+            Unable to update the password
+          </div>
+          <p>{{$error}}</p>
+        </div>
+        @endisset
+        @isset($success)
+            <div class="ui positive message">
+                <div class="header">
+                    Password updated
+                </div>
+                <p>{{$success}}</p>
+            </div>
+        @endisset
+
       <form class="ui form" action="/account/password" method="post">
         @csrf
         <h3 class="ui dividing header centered">
@@ -51,7 +68,7 @@ Account
           <input type="password" name="confirmpassword" required>
         </div>
         <button type="submit" class="ui fluid primary button" tabindex="0">Update</button>
-      </form> 
+      </form>
     </div>
   </div>
 </div>
@@ -63,7 +80,7 @@ Account
     Edit account
   </div>
   <div class="content">
-    <form class="ui form" action="/user/{{$user->id}}" method="post" id="edit-account" enctype="multipart/form-data">
+    <form class="ui form" action="/account/{{$user->id}}" method="post" id="edit-account" enctype="multipart/form-data">
       @csrf
       <div class="field">
         <label>First Name</label>

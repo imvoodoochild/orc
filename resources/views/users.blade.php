@@ -16,15 +16,18 @@ Users
           </button>
         </div>
         <div class="twelve wide column">
-          <div class="ui fluid action input">
-            <input type="text" placeholder="Search...">
-            <button class="ui labeled icon button">
-              <i class="search icon"></i>
-              Search
-            </button>
-          </div>
+          <form>
+            <div class="ui fluid action input">
+              <input type="text" placeholder="Search..." name="search" value="{{$search}}">
+              <button class="ui labeled icon button">
+                <i class="search icon"></i>
+                Search
+              </button>
+            </div>
+          </form>
         </div>
         <div class="fifteen wide column add-padding">
+            @if (count($users) > 0)
             <table class="ui celled definition table">
               <thead>
                 <tr>
@@ -35,45 +38,71 @@ Users
                 </tr>
               </thead>
               <tbody>
+                @foreach ($users as $user)
                 <tr>
                   <td class="collapsing">
                     <div class="ui small basic icon buttons">
-                      <button class="ui button" onclick="$('.ui.modal.edit-user').modal('show')"><i class="edit icon"></i></button>
+                      <button class="ui button" onclick="$('.ui.modal.edit-user-{{$user->id}}').modal('show')"><i class="edit icon"></i></button>
                       <button class="ui button"><i class="cancel icon"></i></button>
                     </div>
                   </td>
-                  <td>John Lilki</td>
-                  <td>jhlilk22@yahoo.com</td>
-                  <td>Developer</td>
+                  <td>{{$user->firstname}} {{$user->lastname}}</td>
+                  <td>{{$user->email}}</td>
+                  <td>{{$user->jobtitle}}</td>
                 </tr>
-                <tr>
-                  <td class="collapsing">
-                    <div class="ui small basic icon buttons">
-                      <button class="ui button" onclick="$('.ui.modal.edit-user').modal('show')"><i class="edit icon"></i></button>
-                      <button class="ui button"><i class="cancel icon"></i></button>
-                    </div>
-                  </td>
-                  <td>Jamie Harington</td>
-                  <td>jamieharingonton@yahoo.com</td>
-                  <td>Developer</td>
-                </tr>
-                <tr>
-                  <td class="collapsing">
-                    <div class="ui small basic icon buttons">
-                      <button class="ui button" onclick="$('.ui.modal.edit-user').modal('show')"><i class="edit icon"></i></button>
-                      <button class="ui button"><i class="cancel icon"></i></button>
-                    </div>
-                  </td>
-                  <td>Jill Lewis</td>
-                  <td>jilsewris22@yahoo.com</td>
-                  <td>Tester</td>
-                </tr>
+                @endforeach
               </tbody>
             </table>
+            @else
+            <div class="ui negative message">
+              <div class="header">
+                Sorry!
+              </div>
+              <p>No such result found for {{$search}}
+            </p></div>
+
+            @endif
         </div>
     </div>
   </div>
 </div>
+
+<!-- Edit user modal -->
+@foreach ($users as $user)
+  <div class="ui modal edit-user-{{$user->id}}">
+    <i class="close icon"></i>
+    <div class="header">
+      Edit User
+    </div>
+    <div class="content">
+      <form class="ui form" action="/user/{{$user->id}}" method="post" id="edit-user-{{$user->id}}" enctype="multipart/form-data">
+        @csrf
+        <div class="two fields">
+            <div class="field">
+              <label>First name</label>
+              <input type="text" name="firstname" value="{{$user->firstname}}">
+            </div>
+            <div class="field">
+              <label>Last name</label>
+              <input type="text" name="lastname" value="{{$user->lastname}}">
+            </div> 
+          </div>
+          <div class="field">
+            <label>Job title</label>
+            <input type="text" name="jobtitle" value="{{$user->jobtitle}}">
+          </div>         
+        </form>
+    </div>
+    <div class="actions">
+      <div class="ui red deny button">
+        Cancel
+      </div>
+      <button class="ui positive button" onclick="document.getElementById('edit-user-{{$user->id}}').submit();">
+        Save
+      </button>
+    </div>
+  </div>
+@endforeach
 
 <!-- Add user modal -->
 <div class="ui modal add-user">
@@ -120,40 +149,6 @@ Users
       </div>
       <button type="submit" class="ui positive button" onclick="document.getElementById('add-user').submit();">
         Add
-      </button>
-    </div>
-  </div>
-
-  <!-- Edit user modal -->
-<div class="ui modal edit-user">
-  <i class="close icon"></i>
-  <div class="header">
-    Edit User
-  </div>
-    <div class="content">
-      <form class="ui form" action="/users" method="post" id="edit-user" enctype="multipart/form-data">
-        <div class="two fields">
-            <div class="field">
-              <label>First name</label>
-              <input type="text" name="firstname">
-            </div>
-            <div class="field">
-              <label>Last name</label>
-              <input type="text" name="lastname">
-            </div> 
-          </div>
-          <div class="field">
-          <label>Job title</label>
-            <input type="text" name="jobtitle">
-          </div>         
-      </form>
-    </div>
-    <div class="actions">
-      <div class="ui red deny button">
-        Cancel
-      </div>
-      <button type="submit" class="ui positive button" onclick="document.getElementById('edit-user').submit();">
-        Save
       </button>
     </div>
   </div>

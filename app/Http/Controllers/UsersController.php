@@ -10,8 +10,18 @@ use Hash;
 
 class UsersController extends Controller
 {
-    public function getUsers() {
-        return view('users');
+    public function getUsers(Request $request) {
+        $users = User::where('role', '!=', 'admin');
+        if($request->has('search')) {
+            $users = $users
+                ->where('firstname', 'like', '%'.$request->get('search').'%')
+                ->orWhere('lastname', 'like', '%'.$request->get('search').'%')
+                ->where('role', '!=', 'admin');
+        }
+        $users = $users->get();
+        return view('users')
+            ->with('users', $users)
+            ->with('search', $request->get('search'));
     }
 
     public function addUser(Request $request)
@@ -32,5 +42,20 @@ class UsersController extends Controller
 
         return redirect('/users');
     }
+
+    public function editUser(Request $request)
+    {
+        $user = User::where("id", $request->id)->first();
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user->jobtitle = $request->jobtitle;
+        $user->update();
+        return redirect('/users');
+    }
     
+    public function removeUser(Request $request)
+    {
+        $user = User::where("id", $request->id)->delete();
+        return redirect('/users');
+    }
 }
