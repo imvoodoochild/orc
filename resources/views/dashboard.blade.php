@@ -18,15 +18,18 @@ Dashboard
         </div>
     </div>
       <div class="twelve wide column">
-        <div class="ui fluid action input">
-          <input type="text" placeholder="Search...">
-          <button class="ui labeled icon button">
-            <i class="search icon"></i>
-            Search
-          </button>
-        </div>
+        <form method='get' action='/dashboard'>
+          <div class="ui fluid action input">
+            <input type="text" placeholder="Search..." name="search" value="{{$search}}">
+            <button class="ui labeled icon button">
+              <i class="search icon"></i>
+              Search
+            </button>
+          </div>
+        </form> 
       </div>
       <div class="fifteen wide column add-padding">
+        @if (count($projects) > 0)
         <table class="ui compact table">
           <thead>
             <tr><th class="six wide">Projects</th>
@@ -58,6 +61,17 @@ Dashboard
             
           </tbody>
         </table>
+        @elseif ($search == '' && count($projects) == 0)
+          You dont have anything
+        @else
+        <div class="ui placeholder segment">
+          <div class="ui icon header">
+            <i class="search icon"></i>
+            Sorry, no such results found for {{$search}}
+          </div>
+        </div>
+
+        @endif
       </div>
   </div>
 </div>

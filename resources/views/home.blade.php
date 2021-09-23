@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.landing')
 
 @section('title')
 Home
@@ -6,41 +6,47 @@ Home
 
 @section('content')
 
-<!-- Home content -->
-<div class="ui center aligned grid top-margin">
-  <div class="row">
-    <div class="pusher">
-  <div class="ui vertical masthead center aligned segment">
-    <div class="ui text container">
-      <h1 class="ui header">
+<div class="pusher">
+  <div class="ui inverted vertical masthead center aligned segment">
+
+    <div class="ui container">
+      <div class="ui large secondary inverted pointing menu">
+          <div class="header item">
+            Orc
+          </div>
+        <div class="right item">
+          <a class="ui inverted button" href="/register">Register</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui text container add-padding">
+      <h1 class="ui inverted header">
         Welcome to Orc
       </h1>
+      <h2>An Automated Software Deployment Tool</h2>
+      <a class="ui huge positive button" href="/login">Get Started <i class="right arrow icon"></i></a>
     </div>
+
   </div>
 
-
-    <div class="ui vertical stripe segment">
-    <div class="ui middle aligned stackable grid container">
-      <div class="row">
-        <div class="eight wide column">
-          <h3 class="ui header">About Orc</h3>
-          <p>Orc helps developers and companies to </p>
-          <h3 class="ui header">We Make Bananas That Can Dance</h3>
-          <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
-        </div>
-        <div class="six wide right floated column">
-          <img src="assets/images/wireframe/white-image.png" class="ui large bordered rounded image">
-        </div>
-      </div>
-      <div class="row">
-        <div class="center aligned column">
-          <button class="ui huge primary button">Get Started <i class="right arrow icon"></i></button>
-        </div>
+  <div class="ui vertical stripe segment">
+    <div class="ui center aligned stackable container">
+      <div class="row add-padding">
+        <div class="ui text container">
+        <h3 class="ui horizontal divider header">
+        About Orc
+      </h3>
+      <p>Development teams set out to push new software versions continuously into production. Developers rely deeply on version control systems such as Git for constant software deliveries. However, Git involves a lot of steps for a single deployment. Even if developers document the entire process, there is the possibility of missing a step or incorrect execution, leading to an error prone and time-consuming task. Orc utilizes Continuous Deployment (CD) where any specific branch committed to the Git repository is pushed for production after testing and containerization of software using Docker. A dedicated CD tool involving both Git and containers can send builds to deployment in a single step, providing a faster and consistent deployment workflow with greater results.</p>
+      <h3 class="ui horizontal divider header">
+        For Development Teams
+      </h3>
+      <p>The target users involved in utilizing the website are development teams having at least developers or DevOps practitioners as these groups can greatly benefit from Orc. In development teams, the head of development will have access to the admin account and create user accounts for others.</p>
+    </div>
       </div>
     </div>
   </div>
 
 </div>
-  </div>
-</div>
+
 @endsection

@@ -8,9 +8,18 @@ Use Auth;
 
 class DashboardController extends Controller
 {
-    public function getDashboard() {
-        $getProjects = Project::where("user_id", Auth::User()->id)->get();
-        return view('dashboard')->with("projects", $getProjects);
+    public function getDashboard(Request $request) {
+        $getProjects = Project::where("user_id", Auth::User()->id);
+
+        if($request->has('search')) {
+            $getProjects = $getProjects
+                ->where('title', 'like', '%'.$request->get('search').'%');
+        }
+
+        $getProjects = $getProjects->get();
+        return view('dashboard')
+            ->with("projects", $getProjects)
+            ->with('search', $request->get('search'));
     }
 
     public function addProject(Request $request)

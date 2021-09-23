@@ -43,7 +43,11 @@ Users
                   <td class="collapsing">
                     <div class="ui small basic icon buttons">
                       <button class="ui button" onclick="$('.ui.modal.edit-user-{{$user->id}}').modal('show')"><i class="edit icon"></i></button>
-                      <button class="ui button"><i class="cancel icon"></i></button>
+                        <form class="ui" method="post" action="/user/{{$user->id}}" onsubmit="return confirm('Do you really want to remove {{$user->firstname}} {{$user->lastname}}?');">
+                        @csrf
+                        <input type="hidden" name="_method" value="delete" />
+                        <button type="submit" class="ui button"><i class="cancel icon"></i></button>
+                      </form>
                     </div>
                   </td>
                   <td>{{$user->firstname}} {{$user->lastname}}</td>
@@ -54,12 +58,12 @@ Users
               </tbody>
             </table>
             @else
-            <div class="ui negative message">
-              <div class="header">
-                Sorry!
+            <div class="ui placeholder segment">
+              <div class="ui icon header">
+                <i class="search icon"></i>
+                Sorry, no such results found for {{$search}}
               </div>
-              <p>No such result found for {{$search}}
-            </p></div>
+            </div>
 
             @endif
         </div>

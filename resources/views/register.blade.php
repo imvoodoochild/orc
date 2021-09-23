@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.landing')
 
 @section('title')
 Register
@@ -7,6 +7,15 @@ Register
 @section('content')
 
 <!-- register content -->
+<div class="ui secondary pointing menu remove-margin">
+    <div class="header item">
+      Orc
+    </div>
+    <div class="right menu">
+    <a class="item" href="/">Home</a>
+  </div>
+</div>
+
 <div class="ui grid top-margin">
   <div class="row">
     <div class="five wide column"></div>

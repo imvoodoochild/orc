@@ -4,16 +4,19 @@
 	Orc
 	</div>
 	<div class="right menu">
-		<a class="item active">
+		<a class="item {{Route::current()->getName() == 'dashboard' ? 'active' : ''}}" href='/dashboard'>
 			Dashboard
 		</a>
-		<a class="item">
+		<a class="item {{Route::current()->getName() == 'account' ? 'active' : ''}}" href='/account'>
 			Account
 		</a>
-		<a class="item">
+		@if (Auth::check() && Auth::user()->role == 'admin')
+		
+		<a class="item {{Route::current()->getName() == 'users' ? 'active' : ''}}" href="/users">
 			Users
 		</a>
-		<a class="item">
+		@endif
+		<a class="item" href="/logout">
 			Logout
 		</a>
 	</div>

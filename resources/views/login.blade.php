@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.landing')
 
 @section('title')
 Login
@@ -7,6 +7,15 @@ Login
 @section('content')
 
 <!-- Login content -->
+<div class="ui secondary pointing menu remove-margin">
+    <div class="header item">
+      Orc
+    </div>
+    <div class="right menu">
+    <a class="item" href="/">Home</a>
+  </div>
+</div>
+
 <div class="ui center aligned grid top-margin">
   <div class="row">
     <div class="column center-column">
