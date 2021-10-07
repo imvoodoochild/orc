@@ -1,13 +1,14 @@
 @extends('layout.master')
 
 @section('title')
-Account
+Profile
 @endsection
 
 @section('content')
 
-<!-- Account content -->
+<!-- Profile content -->
 <div class="ui grid add-padding">
+
   <div class="row">
     <div class="five wide column"></div>
     <div class="six wide column">
@@ -24,7 +25,7 @@ Account
             {{$user->email}}
           </div>
         </div>
-        <div class="ui bottom attached secondary button" tabindex="0" onclick="$('.ui.modal.edit-account').modal('show')">Edit</div>
+        <div class="tiny ui bottom attached secondary button" tabindex="0" onclick="$('.ui.modal.edit-profile').modal('show')">Edit</div>
       </div>
     </div>
     <div class="five wide column"></div>
@@ -35,22 +36,16 @@ Account
     <div class="six wide column">
         @isset($error)
         <div class="ui negative message">
-          <div class="header">
-            Unable to update the password
-          </div>
           <p>{{$error}}</p>
         </div>
         @endisset
         @isset($success)
             <div class="ui positive message">
-                <div class="header">
-                    Password updated
-                </div>
                 <p>{{$success}}</p>
             </div>
         @endisset
 
-      <form class="ui form" action="/account/password" method="post">
+      <form class="ui small form" action="/profile/password" method="post">
         @csrf
         <h3 class="ui dividing header centered">
         Change Password
@@ -67,20 +62,21 @@ Account
           <label>Confirm password</label>
           <input type="password" name="confirmpassword" required>
         </div>
-        <button type="submit" class="ui fluid primary button" tabindex="0">Update</button>
+        <button type="submit" class="tiny ui fluid primary button" tabindex="0">Update</button>
       </form>
     </div>
   </div>
+
 </div>
 
-<!-- Edit account modal -->
-  <div class="ui modal edit-account">
+<!-- Edit profile modal -->
+  <div class="ui modal edit-profile">
   <i class="close icon"></i>
   <div class="header">
-    Edit account
+    Edit Profile
   </div>
   <div class="content">
-    <form class="ui form" action="/account/{{$user->id}}" method="post" id="edit-account" enctype="multipart/form-data">
+    <form class="ui form" action="/profile/{{$user->id}}" method="post" id="edit-profile" enctype="multipart/form-data">
       @csrf
       <div class="field">
         <label>First Name</label>
@@ -100,7 +96,7 @@ Account
     <div class="ui negative deny button">
       Cancel
     </div>
-      <button type="submit" class="ui positive button" onclick="document.getElementById('edit-account').submit();">
+      <button type="submit" class="ui positive button" onclick="document.getElementById('edit-profile').submit();">
         Save
       </button>
     </div>

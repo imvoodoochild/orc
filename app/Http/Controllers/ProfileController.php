@@ -9,23 +9,23 @@ use Hash;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 
-class AccountController extends Controller
+class ProfileController extends Controller
 {
-    public function getAccount() {
+    public function getProfile() {
         $user = User::where("id", Auth::user()->id)->first();
 
         if (Session::has('error')) {
-            return view('account')->with([
+            return view('profile')->with([
                 "user" => $user,
                 "error" => Session::get('error')
             ]);
         } elseif (Session::has('success')) {
-            return view('account')->with([
+            return view('profile')->with([
                 "user" => $user,
                 "success" => Session::get('success')
             ]);
         } else {
-            return view('account')->with("user", $user);
+            return view('profile')->with("user", $user);
         }
     }
 
@@ -33,10 +33,10 @@ class AccountController extends Controller
     {
         $user = User::where("id", Auth::user()->id)->first();
 
-        return view('account')->with("user", $user);
+        return view('profile')->with("user", $user);
     }
 
-    public function editAccount(Request $request)
+    public function editProfile(Request $request)
     {
         $user = User::where("id", $request->id)->first();
         $user->firstname = $request->firstname;
@@ -44,19 +44,19 @@ class AccountController extends Controller
         $user->jobtitle = $request->jobtitle;
         $user->update();
 
-        return redirect('/account');
+        return redirect('/profile');
     }
 
     public function changePassword(Request $request)
     {
         $user = User::where("id", Auth::user()->id)->first();
         if (!Hash::check($request->oldpassword, $user->password) || $request->newpassword != $request->confirmpassword){
-            return Redirect::back()->with('error', 'Either the password does not match, or the new password and confirm password does not match');
+            return Redirect::back()->with('error', 'Sorry, the values entered are invalid!');
         }
 
         $user->password = Hash::make($request->newpassword);
         $user->update();
 
-        return redirect('/account')->with('success', "The user password updated successfully");
+        return redirect('/profile')->with('success', "Password succesfully updated!");
     }
 }

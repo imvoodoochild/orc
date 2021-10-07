@@ -29,6 +29,19 @@ Dashboard
         </form> 
       </div>
       <div class="fifteen wide column add-padding">
+        @isset($error)
+          @if ($error == 'Invalid input, please try again!')
+            <script type="text/javascript">
+              document.addEventListener("DOMContentLoaded", function(){
+                $('.ui.modal.add-project').modal('show');
+              });
+            </script>
+          @else
+          <div class="ui error message">
+            <p>{{$error}}</p>
+          </div>
+          @endif
+        @endisset
         @if (count($projects) > 0)
         <table class="ui compact table">
           <thead>
@@ -62,7 +75,11 @@ Dashboard
           </tbody>
         </table>
         @elseif ($search == '' && count($projects) == 0)
-          You dont have anything
+          <div class="ui placeholder segment">
+          <div class="ui icon header">
+            You haven't added any projects yet!
+          </div>
+        </div>
         @else
         <div class="ui placeholder segment">
           <div class="ui icon header">
@@ -83,41 +100,46 @@ Dashboard
     Add Project
   </div>
     <div class="content">
+      @isset($error)
+        <div class="ui error message">
+          <p>{{$error}}</p>
+        </div>
+      @endisset
+
       <form class="ui form" action="/dashboard" method="post" id="add-project" enctype="multipart/form-data">
         @csrf
         <div class="field">
           <label>Project title</label>
-          <input type="text" name="title">
+          <input type="text" name="title" required>
         </div>
         <div class="field">
           <label>Build type</label>
-          <input type="text" name="build">
+          <input type="text" name="build" required>
         </div>
         <div class="field">
           <label>Git repository link</label>
-          <input type="text" name="link">
+          <input type="text" name="link" required>
         </div>
         <div class="field">
           <label>Project branch</label>
-          <input type="text" name="branch">
+          <input type="text" name="branch" required>
         </div>
          <div class="field">
-          <label>Domain name</label>
-          <input type="text" name="domain">
+          <label>Port number</label>
+          <input type="number" name="port" min="1024" max="49151" required>
         </div>
          <div class="field">
           <label>SSH key</label>
-          <input type="text" name="key">
+          <input type="text" name="key" required>
         </div>
       </form>
     </div>
     <div class="actions">
-      <div class="ui black deny button">
+      <div class="ui negative button">
         Cancel
       </div>
-      <button type="submit" class="ui positive right labeled icon button" onclick="document.getElementById('add-project').submit();">
+      <button type="submit" class="ui positive button" onclick="document.getElementById('add-project').submit();">
         Add
-        <i class="checkmark icon"></i>
       </button>
     </div>
   </div>

@@ -20,7 +20,7 @@ class CreateProjectsTable extends Migration
             $table->string('build');
             $table->string('link')->unique();
             $table->string('branch');
-            $table->string('domain')->unique();
+            $table->integer('port')->unique();
             $table->string('key');
             $table->string('status');
             $table->timestamps();

@@ -6,17 +6,18 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\ModelTest\Project;
 use Illuminate\Support\Facades\Hash;
+use Session;
 
 class RegisterController extends Controller
 {
     public function getRegister() {
-        return view('register');
+        return view('register')->with("error", Session::get("error"));
     }
 
     public function doRegister(Request $request)
     {
         if ($request->password != $request->confirmpassword){
-            return redirect('/register');
+            return redirect('/register')->with("error", "Invalid input, please try again!");
         }
         
         $user = new User;
@@ -33,3 +34,4 @@ class RegisterController extends Controller
     }
 
 }
+

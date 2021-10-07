@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\AccountController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
@@ -43,16 +43,17 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/project/{id}', [DashboardController::class, "getProject"]);
 	Route::post('/project/{id}', [DashboardController::class, "editProject"]);
 	Route::delete('/project/{id}', [DashboardController::class, "removeProject"]);
+	
+	Route::post('/profile/password', [ProfileController::class, "changePassword"]);
+	Route::get('/profile/{id}', [ProfileController::class, "getUser"]);
+	Route::post('/profile/{id}', [ProfileController::class, "editProfile"]);
 
-	Route::get('/account/{id}', [AccountController::class, "getUser"]);
-	Route::post('/account/{id}', [AccountController::class, "editAccount"]);
+	Route::get('/profile', [ProfileController::class, "getProfile"])->name('profile');
+	
 
-	Route::get('/account', [AccountController::class, "getAccount"])->name('account');
-	Route::post('/account/password', [AccountController::class, "changePassword"]);
-
-	Route::get('/users', [UsersController::class, "getUsers"])->name('users');
-	Route::post('/user', [UsersController::class, "addUser"]);
-	Route::post('/user/{id}', [UsersController::class, "editUser"]);
-	Route::delete('/user/{id}', [UsersController::class, "removeUser"]);
+	Route::get('/staff', [StaffController::class, "getStaff"])->name('staff');
+	Route::post('/staff', [StaffController::class, "addUser"]);
+	Route::post('/staff/{id}', [StaffController::class, "editUser"]);
+	Route::delete('/staff/{id}', [StaffController::class, "removeUser"]);
 
 });

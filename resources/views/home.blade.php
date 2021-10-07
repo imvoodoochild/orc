@@ -12,10 +12,10 @@ Home
     <div class="ui container">
       <div class="ui large secondary inverted pointing menu">
           <div class="header item">
-            Orc
+            <img src = "images\logo.svg" alt="Logo SVG"/>
           </div>
         <div class="right item">
-          <a class="ui inverted button" href="/register">Register</a>
+          <a class="ui inverted button" href="/login">Login</a>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@ Home
         Welcome to Orc
       </h1>
       <h2>An Automated Software Deployment Tool</h2>
-      <a class="ui huge positive button" href="/login">Get Started <i class="right arrow icon"></i></a>
+      <a class="ui huge positive button" href="/register">Get Started <i class="right arrow icon"></i></a>
     </div>
 
   </div>

@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\ModelTest\Project;
+use Illuminate\Database\Exception;
 use App\Models\User;
 use Auth;
 use Hash;
+use Session;
+use Log;
 
-class UsersController extends Controller
+class StaffController extends Controller
 {
-    public function getUsers(Request $request) {
+    public function getStaff(Request $request) {
         $users = User::where('role', '!=', 'admin');
         if($request->has('search')) {
             $users = $users
@@ -19,7 +22,8 @@ class UsersController extends Controller
                 ->where('role', '!=', 'admin');
         }
         $users = $users->get();
-        return view('users')
+        return view('staff')
+            ->with("error", Session::get("error"))
             ->with('users', $users)
             ->with('search', $request->get('search'));
     }
@@ -27,20 +31,25 @@ class UsersController extends Controller
     public function addUser(Request $request)
     {
         if ($request->password != $request->confirmpassword){
-            return redirect('/users');
+            return redirect('/staff')->with('error', 'Passwords do not match, please try again!');
         }
         
-        $user = new User;
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->workplace = Auth::user()->workplace;
-        $user->jobtitle = $request->jobtitle;
-        $user->role = 'staff';
-        $user->save();
+        try {
+            $user = new User;
+            $user->firstname = $request->firstname;
+            $user->lastname = $request->lastname;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->workplace = Auth::user()->workplace;
+            $user->jobtitle = $request->jobtitle;
+            $user->role = 'staff';
+            $user->save();
+            return redirect('/staff');
 
-        return redirect('/users');
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+            return redirect('/staff')->with('error', 'Invalid input, please try again!');
+        }
     }
 
     public function editUser(Request $request)
@@ -50,12 +59,12 @@ class UsersController extends Controller
         $user->lastname = $request->lastname;
         $user->jobtitle = $request->jobtitle;
         $user->update();
-        return redirect('/users');
+        return redirect('/staff');
     }
     
     public function removeUser(Request $request)
     {
         $user = User::where("id", $request->id)->delete();
-        return redirect('/users');
+        return redirect('/staff');
     }
 }

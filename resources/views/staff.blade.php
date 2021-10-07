@@ -1,12 +1,12 @@
 @extends('layout.master')
 
 @section('title')
-Users
+Staff
 @endsection
 
 @section('content')
 
-<!-- Users content -->
+<!-- Staff content -->
 <div class="ui centered grid add-padding">
   <div class="row">
       <div class="two wide column">
@@ -27,6 +27,19 @@ Users
           </form>
         </div>
         <div class="fifteen wide column add-padding">
+          @isset($error)
+            @if ($error == 'Invalid input, please try again!')
+              <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function(){
+                  $('.ui.modal.add-user').modal('show');
+                });
+              </script>
+            @else
+            <div class="ui error message">
+              <p>{{$error}}</p>
+            </div>
+            @endif
+          @endisset
             @if (count($users) > 0)
             <table class="ui celled definition table">
               <thead>
@@ -43,7 +56,7 @@ Users
                   <td class="collapsing">
                     <div class="ui small basic icon buttons">
                       <button class="ui button" onclick="$('.ui.modal.edit-user-{{$user->id}}').modal('show')"><i class="edit icon"></i></button>
-                        <form class="ui" method="post" action="/user/{{$user->id}}" onsubmit="return confirm('Do you really want to remove {{$user->firstname}} {{$user->lastname}}?');">
+                        <form class="ui" method="post" action="/staff/{{$user->id}}" onsubmit="return confirm('Do you really want to remove {{$user->firstname}} {{$user->lastname}}?');">
                         @csrf
                         <input type="hidden" name="_method" value="delete" />
                         <button type="submit" class="ui button"><i class="cancel icon"></i></button>
@@ -57,7 +70,14 @@ Users
                 @endforeach
               </tbody>
             </table>
-            @else
+            @elseif ($search == '' && count($users) == 0)
+            <div class="ui placeholder segment">
+            <div class="ui icon header">
+              <!-- <i class="search icon"></i> -->
+              You haven't added any users yet!
+            </div>
+          </div>
+          @else
             <div class="ui placeholder segment">
               <div class="ui icon header">
                 <i class="search icon"></i>
@@ -79,7 +99,7 @@ Users
       Edit User
     </div>
     <div class="content">
-      <form class="ui form" action="/user/{{$user->id}}" method="post" id="edit-user-{{$user->id}}" enctype="multipart/form-data">
+      <form class="ui form" action="/staff/{{$user->id}}" method="post" id="edit-user-{{$user->id}}" enctype="multipart/form-data">
         @csrf
         <div class="two fields">
             <div class="field">
@@ -115,7 +135,12 @@ Users
     Add User
   </div>
     <div class="content">
-      <form class="ui form" action="/user" method="post" id="add-user" enctype="multipart/form-data">
+      @isset($error)
+        <div class="ui error message">
+          <p>{{$error}}</p>
+        </div>
+      @endisset
+      <form class="ui form" action="/staff" method="post" id="add-user" enctype="multipart/form-data">
         @csrf
         <div class="two fields">
             <div class="field">

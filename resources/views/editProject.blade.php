@@ -19,27 +19,27 @@ Edit Project
           </h2>
           <div class="field">
             <label>Project title</label>
-            <input type="text" name="title" value="{{$project->title}}">
+            <input type="text" name="title" value="{{$project->title}}" required>
           </div>
           <div class="field">
             <label>Build type</label>
-            <input type="text" name="build" value="{{$project->build}}">
+            <input type="text" name="build" value="{{$project->build}}" required>
           </div>
           <div class="field">
             <label>Git repository link</label>
-            <input type="text" name="link" value="{{$project->link}}">
+            <input type="text" name="link" value="{{$project->link}}" required>
           </div>
           <div class="field">
             <label>Project branch</label>
-            <input type="text" name="branch" value="{{$project->branch}}">
+            <input type="text" name="branch" value="{{$project->branch}}" required>
           </div>
           <div class="field">
-            <label>Domain name</label>
-            <input type="text" name="domain" value="{{$project->domain}}">
+            <label>Port number</label>
+            <input type="number" name="port" min="0" value="{{$project->port}}" required>
           </div>
            <div class="field">
             <label>SSH key</label>
-            <input type="text" name="key" value="{{$project->key}}">
+            <input type="text" name="key" value="{{$project->key}}" required>
           </div>
           <button type="submit" class="ui primary button fluid" tabindex="0">Update</button>
         </div>
