@@ -50,8 +50,8 @@ class ProfileController extends Controller
     public function changePassword(Request $request)
     {
         $user = User::where("id", Auth::user()->id)->first();
-        if (!Hash::check($request->oldpassword, $user->password) || $request->newpassword != $request->confirmpassword){
-            return Redirect::back()->with('error', 'Sorry, the values entered are invalid!');
+        if (!Hash::check($request->currentpassword, $user->password) || $request->newpassword != $request->confirmpassword){
+            return Redirect::back()->with('error', 'Invalid input, please try again!');
         }
 
         $user->password = Hash::make($request->newpassword);

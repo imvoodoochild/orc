@@ -51,8 +51,8 @@ Profile
         Change Password
         </h3>
         <div class="field">
-          <label>Old password</label>
-          <input type="password" name="oldpassword" required>
+          <label>Current password</label>
+          <input type="password" name="currentpassword" required>
         </div>
         <div class="field">
           <label>New password</label>

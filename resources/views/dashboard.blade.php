@@ -20,7 +20,7 @@ Dashboard
       <div class="twelve wide column">
         <form method='get' action='/dashboard'>
           <div class="ui fluid action input">
-            <input type="text" placeholder="Search..." name="search" value="{{$search}}">
+            <input type="text" placeholder="Search..." name="search" value="{{$search}}" required>
             <button class="ui labeled icon button">
               <i class="search icon"></i>
               Search

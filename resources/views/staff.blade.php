@@ -18,7 +18,7 @@ Staff
         <div class="twelve wide column">
           <form>
             <div class="ui fluid action input">
-              <input type="text" placeholder="Search..." name="search" value="{{$search}}">
+              <input type="text" placeholder="Search..." name="search" value="{{$search}}" required>
               <button class="ui labeled icon button">
                 <i class="search icon"></i>
                 Search
