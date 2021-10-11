@@ -12,7 +12,7 @@ Login
       <img src = "images\logo.svg" alt="Logo SVG"/>
     </div>
     <div class="right menu">
-    <a class="item" href="/">Home</a>
+    <a class="item" href="/home">Home</a>
   </div>
 </div>
 
@@ -37,7 +37,7 @@ Login
               <input type="password" name="password" placeholder="Password" required>
             </div>
           </div>
-          <button type="submit" class="ui large submit button fluid" tabindex="0">Login</button>
+          <button type="submit" class="ui large submit positive button fluid" tabindex="0">Login</button>
         </div>
       </form>
       <div class="ui message">

@@ -26,7 +26,7 @@ Dashboard
               Search
             </button>
           </div>
-        </form> 
+        </form>
       </div>
       <div class="fifteen wide column add-padding">
         @isset($error)
@@ -45,14 +45,21 @@ Dashboard
         @if (count($projects) > 0)
         <table class="ui compact table">
           <thead>
-            <tr><th class="six wide">Projects</th>
-            <th class="six wide">Status</th>
-            <th class="four wide"></th>
+            <tr><th class="two wide">Project</th>
+            <th class="two wide">Branch</th>
+            <th class="two wide">Port</th>
+            <th class="two wide">Status</th>
+            <th class="three wide"></th>
           </tr></thead>
           <tbody>
             @foreach ($projects as $project)
               <tr>
-                <td>{{$project->title}}</td>
+                <td>
+                <a target="_blank" href="http://localhost:{{$project->port}}">
+                {{$project->title}}
+                </td>
+                <td>{{$project->branch}}</td>
+                <td>{{$project->port}}</td>
                 <td class="negative">{{$project->status}}</td>
                 <td class="right aligned">
                   <a href="/project/{{$project->id}}" class="ui primary button">Edit</a>
@@ -63,21 +70,22 @@ Dashboard
                       <button type="submit" class="ui secondary button">Remove</button>
                     </form>
                   </div>
-                  <div class="ui buttons">
-                    <button class="ui negative button">Stop</button>
-                    <div class="or"></div>
-                    <button class="ui positive button">Run</button>
-                  </div>
+                   <div class="ui buttons">
+                      <a class="ui negative button {{$project->isBuilt && $project->isRunning ? '' : 'disabled'}}" href="/project/{{$project->id}}/stop">Stop</a>
+                      <div class="or"></div>
+                      <a class="ui positive button {{$project->isBuilt && !$project->isRunning ? '' : 'disabled'}}" href="/project/{{$project->id}}/start">Run</a>
+                   </div>
                 </td>
               </tr>
-            @endforeach          
-            
+            @endforeach
+
           </tbody>
         </table>
         @elseif ($search == '' && count($projects) == 0)
           <div class="ui placeholder segment">
           <div class="ui icon header">
-            You haven't added any projects yet!
+          <i class="file alternate icon"></i>
+            You have not added any projects!
           </div>
         </div>
         @else
@@ -87,7 +95,6 @@ Dashboard
             Sorry, no such results found for {{$search}}
           </div>
         </div>
-
         @endif
       </div>
   </div>
@@ -124,13 +131,9 @@ Dashboard
           <label>Project branch</label>
           <input type="text" name="branch" required>
         </div>
-         <div class="field">
+        <div class="field">
           <label>Port number</label>
-          <input type="number" name="port" min="1024" max="49151" required>
-        </div>
-         <div class="field">
-          <label>SSH key</label>
-          <input type="text" name="key" required>
+          <input type="number" name="port" min="1" required>
         </div>
       </form>
     </div>

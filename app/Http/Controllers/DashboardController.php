@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProcessBuild;
+use App\Jobs\ProcessClone;
+use App\Jobs\ProcessRun;
+use App\Jobs\ProcessStop;
+use App\Jobs\ProcessRemove;
 use Illuminate\Http\Request;
 use Illuminate\Database\Exception;
 use App\Models\Project;
 Use Auth;
+use Illuminate\Queue\Queue;
+use Illuminate\Support\Facades\Bus;
 use Session;
 use Log;
 
@@ -36,22 +43,25 @@ class DashboardController extends Controller
             $project->link = $request->link;
             $project->branch = $request->branch;
             $project->port = $request->port;
-            $project->key = $request->key;
             $project->status = 'Stopped';
             $project->save();
-            return redirect('/dashboard');
 
+            Bus::chain([
+                new ProcessClone($project),
+                new ProcessBuild($project)
+            ])->dispatch();
+
+            return redirect('/dashboard');
         } catch(\Exception $e) {
             Log::error($e->getMessage());
             return redirect('/dashboard')->with('error', 'Invalid input, please try again!');
         }
-
     }
 
     public function getProject(Request $request)
     {
         $project = Project::where("id", $request->id)->first();
-        
+
         return view('editProject')->with("project", $project);
     }
 
@@ -64,7 +74,6 @@ class DashboardController extends Controller
         $project->link = $request->link;
         $project->branch = $request->branch;
         $project->port = $request->port;
-        $project->key = $request->key;
         $project->status = 'Stopped';
         $project->update();
 
@@ -73,7 +82,21 @@ class DashboardController extends Controller
 
     public function removeProject(Request $request)
     {
-        $project = Project::where("id", $request->id)->delete();
+        $project = Project::where("id", $request->id)->first();
+        ProcessRemove::dispatch($project)->afterResponse();
+
+        return redirect('/dashboard');
+    }
+
+    public function startProject(int $projectId) {
+        $project = Project::where('id', $projectId)->first();
+        ProcessRun::dispatch($project)->afterResponse();
+        return redirect('/dashboard');
+    }
+
+    public function stopProject(int $projectId) {
+        $project = Project::where('id', $projectId)->first();
+        ProcessStop::dispatch($project)->afterResponse();
         return redirect('/dashboard');
     }
 }

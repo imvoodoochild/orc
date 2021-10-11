@@ -10,7 +10,7 @@ Edit Project
 <div class="ui grid">
   <div class="row">
     <div class="five wide column"></div>
-    <div class="six wide column add-padding">  
+    <div class="six wide column add-padding">
       <form class="ui large form" action="/project/{{$project->id}}" method="post">
         @csrf
         <div class="ui stacked segment">
@@ -35,11 +35,7 @@ Edit Project
           </div>
           <div class="field">
             <label>Port number</label>
-            <input type="number" name="port" min="0" value="{{$project->port}}" required>
-          </div>
-           <div class="field">
-            <label>SSH key</label>
-            <input type="text" name="key" value="{{$project->key}}" required>
+            <input type="number" name="port" min="1" value="{{$project->port}}" required>
           </div>
           <button type="submit" class="ui primary button fluid" tabindex="0">Update</button>
         </div>

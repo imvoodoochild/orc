@@ -44,7 +44,7 @@ Staff
             <table class="ui celled definition table">
               <thead>
                 <tr>
-                  <th></th>                  
+                  <th></th>
                   <th>Name</th>
                   <th>Email</th>
                   <th>Job Title</th>
@@ -73,8 +73,8 @@ Staff
             @elseif ($search == '' && count($users) == 0)
             <div class="ui placeholder segment">
             <div class="ui icon header">
-              <!-- <i class="search icon"></i> -->
-              You haven't added any users yet!
+              <i class="user times icon"></i>
+              You have not added any users!
             </div>
           </div>
           @else
@@ -109,12 +109,12 @@ Staff
             <div class="field">
               <label>Last name</label>
               <input type="text" name="lastname" value="{{$user->lastname}}">
-            </div> 
+            </div>
           </div>
           <div class="field">
             <label>Job title</label>
             <input type="text" name="jobtitle" value="{{$user->jobtitle}}">
-          </div>         
+          </div>
         </form>
     </div>
     <div class="actions">
@@ -150,7 +150,7 @@ Staff
             <div class="field">
               <label>Last name</label>
               <input type="text" name="lastname">
-            </div> 
+            </div>
           </div>
           <div class="field">
           <label>Job title</label>

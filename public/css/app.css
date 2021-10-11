@@ -3,9 +3,11 @@ html, body {
 }
 
 footer {
+    background: #353535;
     width: 100%;
     position: fixed;
     bottom: 0;
+    left: 0;
 }
 
 .container {

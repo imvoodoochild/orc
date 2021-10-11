@@ -12,14 +12,14 @@ Register
       <img src = "images\logo.svg" alt="Logo SVG"/>
     </div>
     <div class="right menu">
-    <a class="item" href="/">Home</a>
+    <a class="item" href="/home">Home</a>
   </div>
 </div>
 
 <div class="ui grid" style="padding-top: 50px;">
   <div class="row">
     <div class="five wide column"></div>
-    <div class="six wide column">      
+    <div class="six wide column">
       <form class="ui large form" action="/register" method="post">
         @csrf
         <div class="ui stacked segment">
@@ -34,7 +34,7 @@ Register
             <div class="field">
               <label>Last name</label>
               <input type="text" name="lastname">
-            </div> 
+            </div>
           </div>
           <div class="two fields">
             <div class="field">
@@ -44,7 +44,7 @@ Register
             <div class="field">
               <label>Job title</label>
               <input type="text" name="jobtitle" required>
-            </div> 
+            </div>
           </div>
           <div class="field">
           <label>Email</label>

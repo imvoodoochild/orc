@@ -18,11 +18,13 @@ class CreateProjectsTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->string('build');
-            $table->string('link')->unique();
+            $table->string('link');
             $table->string('branch');
-            $table->integer('port')->unique();
-            $table->string('key');
+            $table->string('port')->unique();
             $table->string('status');
+            $table->boolean('isCloned')->default(false);
+            $table->boolean('isBuilt')->default(false);
+            $table->boolean('isRunning')->default(false);
             $table->timestamps();
         });
     }
