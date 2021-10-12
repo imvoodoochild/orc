@@ -101,20 +101,20 @@ class DashboardController extends Controller
     public function removeProject(Request $request)
     {
         $project = Project::where("id", $request->id)->first();
-        ProcessRemove::dispatch($project)->afterResponse();
+        ProcessRemove::dispatch($project);
 
         return redirect('/dashboard');
     }
 
     public function startProject(int $projectId) {
         $project = Project::where('id', $projectId)->first();
-        ProcessRun::dispatch($project)->afterResponse();
+        ProcessRun::dispatch($project);
         return redirect('/dashboard');
     }
 
     public function stopProject(int $projectId) {
         $project = Project::where('id', $projectId)->first();
-        ProcessStop::dispatch($project)->afterResponse();
+        ProcessStop::dispatch($project);
         return redirect('/dashboard');
     }
 }

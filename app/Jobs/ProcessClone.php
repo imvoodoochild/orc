@@ -35,11 +35,12 @@ class ProcessClone implements ShouldQueue
     public function handle()
     {
         $repo = $this->project->link;
+        $branch = $this->project->branch;
         $folder = env('REPO_DIR');
         $projectname = str_replace(" ", "", $this->project->title);
 
         Log::info("Cloning project into $folder...");
-        exec("git clone $repo $folder/$projectname");
+        exec("git clone --branch $branch $repo $folder/$projectname");
         Log::info("Getting project from $repo");
         $this->project->isCloned = true;
         $this->project->update();

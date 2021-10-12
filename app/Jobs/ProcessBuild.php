@@ -36,9 +36,14 @@ class ProcessBuild implements ShouldQueue
     {
         $folder = env('REPO_DIR');
         $projectname = str_replace(" ", "", $this->project->title);
+        if (file_exists("$folder/$projectname/Dockerfile")) {
+            Log::info("Building project $projectname");
+            exec("docker build -f $folder/$projectname/Dockerfile --build-arg DIR=./repos/$projectname/ -t $projectname .");
+        } else {
+            Log::info("This project does not have a dockerfile, will not build");
+        }
 
-        Log::info("Building project $projectname");
-        exec("docker build -f $folder/$projectname/Dockerfile --build-arg DIR=./repos/$projectname/ -t $projectname .");
+
         $this->project->isBuilt = true;
         $this->project->update();
 

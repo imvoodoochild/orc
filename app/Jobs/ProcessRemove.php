@@ -37,8 +37,15 @@ class ProcessRemove implements ShouldQueue
         $folder = env('REPO_DIR');
         $projectname = str_replace(" ", "", $this->project->title);
 
+        if (file_exists("$folder/$projectname/docker-compose.yaml")) {
+            Log::info("Found docker-compose.yaml");
+            $composeFile = "docker-compose.yaml";
+        } else {
+            Log::info("Setting docker-compose file with format yml");
+            $composeFile = "docker-compose.yml";
+        }
         Log::info("Stopping project $projectname...");
-        exec("docker-compose -f $folder/$projectname/docker-compose.yaml down");
+        exec("docker-compose -f $folder/$projectname/$composeFile down");
         $this->project->isRunning = false;
         $this->project->status = 'Stopped';
         $this->project->update();

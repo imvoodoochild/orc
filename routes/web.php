@@ -8,7 +8,6 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +19,9 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome', ['title' => 'Orc']);
-// });
+Route::get('/', function () {
+     return redirect('/home');
+});
 
 Route::get('/home', [HomeController::class, "getHome"]);
 
@@ -34,7 +33,6 @@ Route::get('/register', [RegisterController::class, "getRegister"])->name('regis
 Route::post('/register', [RegisterController::class, "doRegister"]);
 
 Route::middleware(['auth'])->group(function () {
-	Route::get('/doc', [DashboardController::class, "getDoc"]);
 
 	Route::get('/dashboard', [DashboardController::class, "getDashboard"])->name('dashboard');
 	Route::post('/dashboard', [DashboardController::class, "addProject"]);

@@ -38,7 +38,14 @@ class ProcessRun implements ShouldQueue
         $projectname = str_replace(" ", "", $this->project->title);
 
         Log::info("Running project $projectname...");
-        exec("docker-compose -f $folder/$projectname/docker-compose.yaml up -d");
+        if (file_exists("$folder/$projectname/docker-compose.yaml")) {
+            Log::info("Found docker-compose.yaml");
+            $composeFile = "docker-compose.yaml";
+        } else {
+            Log::info("Setting docker-compose file with format yml");
+            $composeFile = "docker-compose.yml";
+        }
+        exec("docker-compose -f $folder/$projectname/$composeFile up -d");
         $this->project->isRunning = true;
         $this->project->status = 'Running';
         $this->project->update();
