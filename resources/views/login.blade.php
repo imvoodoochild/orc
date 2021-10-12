@@ -37,7 +37,7 @@ Login
               <input type="password" name="password" placeholder="Password" required>
             </div>
           </div>
-          <button type="submit" class="ui large submit positive button fluid" tabindex="0">Login</button>
+          <button type="submit" class="ui large submit button fluid" tabindex="0">Login</button>
         </div>
       </form>
       <div class="ui message">

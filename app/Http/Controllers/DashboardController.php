@@ -62,22 +62,40 @@ class DashboardController extends Controller
     {
         $project = Project::where("id", $request->id)->first();
 
-        return view('editProject')->with("project", $project);
+        if (Session::has('error')) {
+            return view('editProject')
+                ->with("error", "The port is already in use, please try again!")
+                ->with("project", $project);
+        } else {
+            return view('editProject')
+                ->with("project", $project);
+        }
     }
 
     public function editProject(Request $request)
     {
         $project = Project::where("id", $request->id)->first();
+        $projectList = Project::where('id', '!=', $project->id)
+            ->pluck('port')
+            ->toArray();
+           $getProjects = Project::where("user_id", Auth::User()->id)
+                       ->get();
+        if (in_array($request->get('port'), $projectList)) {
+            return redirect('/project/'.$project->id)
+                ->with("error", "The port is already in use, please try again!")
+                ->with("projects", $getProjects);;
+        } else {
+            $project->title = $request->title;
+            $project->build = $request->build;
+            $project->link = $request->link;
+            $project->branch = $request->branch;
+            $project->port = $request->port;
+            $project->status = 'Stopped';
+            $project->update();
 
-        $project->title = $request->title;
-        $project->build = $request->build;
-        $project->link = $request->link;
-        $project->branch = $request->branch;
-        $project->port = $request->port;
-        $project->status = 'Stopped';
-        $project->update();
-
-        return redirect('/dashboard');
+            return redirect('/dashboard')
+                ->with("projects", $getProjects);
+        }
     }
 
     public function removeProject(Request $request)

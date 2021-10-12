@@ -40,6 +40,11 @@ Edit Project
           <button type="submit" class="ui primary button fluid" tabindex="0">Update</button>
         </div>
       </form>
+        @isset($error)
+          <div class="ui tiny error message">
+            <p>{{$error}}</p>
+          </div>
+        @endisset
     </div>
   </div>
 </div>
