@@ -19,7 +19,7 @@ class RegisterController extends Controller
         if ($request->password != $request->confirmpassword){
             return redirect('/register')->with("error", "Invalid input, please try again!");
         }
-        
+
         $user = new User;
         $user->firstname = $request->firstname;
         $user->lastname = $request->lastname;
@@ -32,6 +32,5 @@ class RegisterController extends Controller
 
         return redirect('/login');
     }
-
 }
 
