@@ -63,7 +63,7 @@ Register
           <button type="submit" class="ui button fluid" tabindex="0">Register</button>
         </div>
       </form>
-      <div class="ui center message">
+      <div class="ui message center-text">
         Already have an account? <a href="login">Login</a>
       </div>
       @isset($error)

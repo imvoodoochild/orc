@@ -44,6 +44,12 @@ class ProcessClone implements ShouldQueue
         Log::info("Getting project from $repo");
         $this->project->isCloned = true;
         $this->project->update();
+
+        if (!file_exists("$folder/$projectname")) {
+            Log::info("Removed the failed project $projectname");
+            $this->project->delete();
+        }
+
         Log::info("Done cloning project $repo");
     }
 }

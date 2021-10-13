@@ -43,7 +43,7 @@ class DashboardController extends Controller
             $project->link = $request->link;
             $project->branch = $request->branch;
             $project->port = $request->port;
-            $project->status = 'Stopped';
+            $project->status = 'Building';
             $project->save();
 
             Bus::chain([
@@ -64,7 +64,7 @@ class DashboardController extends Controller
 
         if (Session::has('error')) {
             return view('editProject')
-                ->with("error", "The port is already in use, please try again!")
+                ->with("error", "Invalid input, please try again!")
                 ->with("project", $project);
         } else {
             return view('editProject')
@@ -82,7 +82,7 @@ class DashboardController extends Controller
                        ->get();
         if (in_array($request->get('port'), $projectList)) {
             return redirect('/project/'.$project->id)
-                ->with("error", "The port is already in use, please try again!")
+                ->with("error", "Invalid input, please try again!")
                 ->with("projects", $getProjects);;
         } else {
             $project->title = $request->title;

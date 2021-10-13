@@ -5,7 +5,6 @@ Dashboard
 @endsection
 
 @section('content')
-
 <!-- Dashboard content -->
 <div class="ui centered grid add-padding">
   <div class="row">
@@ -60,7 +59,7 @@ Dashboard
                 </td>
                 <td>{{$project->branch}}</td>
                 <td>{{$project->port}}</td>
-                <td class="negative">{{$project->status}}</td>
+                <td>{{$project->status}}</td>
                 <td class="right aligned">
                   <a href="/project/{{$project->id}}" class="ui primary button">Edit</a>
                   <div class="ui buttons">
@@ -78,14 +77,13 @@ Dashboard
                 </td>
               </tr>
             @endforeach
-
           </tbody>
         </table>
         @elseif ($search == '' && count($projects) == 0)
           <div class="ui placeholder segment">
           <div class="ui icon header">
-          <i class="file alternate icon"></i>
-            You have not added any projects!
+          <i class="folder open icon"></i>
+            You have not added any projects yet!
           </div>
         </div>
         @else
@@ -112,7 +110,6 @@ Dashboard
           <p>{{$error}}</p>
         </div>
       @endisset
-
       <form class="ui form" action="/dashboard" method="post" id="add-project" enctype="multipart/form-data">
         @csrf
         <div class="field">

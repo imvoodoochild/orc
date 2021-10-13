@@ -31,37 +31,44 @@ class StaffController extends Controller
     public function addUser(Request $request)
     {
         if ($request->password != $request->confirmpassword){
-            return redirect('/staff')->with('error', 'Passwords do not match, please try again!');
-        }
-        
-        try {
-            $user = new User;
-            $user->firstname = $request->firstname;
-            $user->lastname = $request->lastname;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->workplace = Auth::user()->workplace;
-            $user->jobtitle = $request->jobtitle;
-            $user->role = 'staff';
-            $user->save();
-            return redirect('/staff');
-
-        } catch(\Exception $e) {
-            Log::error($e->getMessage());
             return redirect('/staff')->with('error', 'Invalid input, please try again!');
+        }
+        else {
+            try {
+                $user = new User;
+                $user->firstname = $request->firstname;
+                $user->lastname = $request->lastname;
+                $user->email = $request->email;
+                $user->password = Hash::make($request->password);
+                $user->workplace = Auth::user()->workplace;
+                $user->jobtitle = $request->jobtitle;
+                $user->role = 'staff';
+                $user->save();
+                return redirect('/staff');
+
+            } catch(\Exception $e) {
+                Log::error($e->getMessage());
+                return redirect('/staff')->with('error', 'Invalid input, please try again!');
+            }
         }
     }
 
     public function editUser(Request $request)
     {
-        $user = User::where("id", $request->id)->first();
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
-        $user->jobtitle = $request->jobtitle;
-        $user->update();
-        return redirect('/staff');
+        try {
+            $user = User::where("id", $request->id)->first();
+            $user->firstname = $request->firstname;
+            $user->lastname = $request->lastname;
+            $user->jobtitle = $request->jobtitle;
+            $user->update();
+            return redirect('/staff');
+        }
+        catch (\Exception $e){
+            Log::error($e->getMessage());
+            return redirect('/staff')->with('error', 'Invalid input, please try again!');
+        }
     }
-    
+
     public function removeUser(Request $request)
     {
         $user = User::where("id", $request->id)->delete();

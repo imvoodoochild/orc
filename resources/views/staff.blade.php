@@ -74,7 +74,7 @@ Staff
             <div class="ui placeholder segment">
             <div class="ui icon header">
               <i class="user times icon"></i>
-              You have not added any users!
+              You have not added any users yet!
             </div>
           </div>
           @else
@@ -99,6 +99,11 @@ Staff
       Edit User
     </div>
     <div class="content">
+      @isset($error)
+        <div class="ui error message">
+          <p>{{$error}}</p>
+        </div>
+      @endisset
       <form class="ui form" action="/staff/{{$user->id}}" method="post" id="edit-user-{{$user->id}}" enctype="multipart/form-data">
         @csrf
         <div class="two fields">

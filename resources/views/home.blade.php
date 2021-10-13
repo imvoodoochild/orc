@@ -7,10 +7,10 @@ Home
 @section('content')
 
 <div class="pusher">
-  <div class="ui inverted vertical masthead center aligned segment">
+  <div class="ui vertical masthead center aligned segment home-header">
 
     <div class="ui container">
-      <div class="ui large secondary inverted pointing menu">
+      <div class="ui large secondary pointing menu remove-border">
           <div class="header item">
             <img src = "images\logo.svg" alt="Logo SVG"/>
           </div>
@@ -24,7 +24,7 @@ Home
       <h1 class="ui inverted header">
         Welcome to Orc
       </h1>
-      <h2>An Automated Software Deployment Tool</h2>
+      <h2 class="ui inverted header">An Automated Software Deployment Tool</h2>
       <a class="ui huge positive button" href="/register">Get Started <i class="right arrow icon"></i></a>
     </div>
 

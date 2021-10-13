@@ -43,8 +43,8 @@ class ProcessBuild implements ShouldQueue
             Log::info("This project does not have a dockerfile, will not build");
         }
 
-
         $this->project->isBuilt = true;
+        $this->project->status = 'Stopped';
         $this->project->update();
 
         Log::info("$projectname built successfully...");

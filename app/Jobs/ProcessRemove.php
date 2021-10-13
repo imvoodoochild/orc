@@ -50,7 +50,11 @@ class ProcessRemove implements ShouldQueue
         $this->project->status = 'Stopped';
         $this->project->update();
         Log::info("$projectname stopped...");
-        exec("rmdir /s /Q $folder/$projectname");
+
+        if (file_exists("$folder/$projectname")) {
+            Log::info("$folder\\$projectname");
+            exec("rmdir /s /Q $folder\\$projectname");
+        }
 
         $this->project->delete();
         Log::info("$projectname removed...");

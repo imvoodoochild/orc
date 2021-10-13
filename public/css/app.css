@@ -3,11 +3,24 @@ html, body {
 }
 
 footer {
-    background: #353535;
+    background: #292929 !important;
+    color: #FFFFFF;
     width: 100%;
     position: fixed;
     bottom: 0;
     left: 0;
+}
+
+.home-header {
+    background: #292929 !important;
+}
+
+.remove-border {
+    border-bottom: 0 !important;
+}
+
+.center-text {
+    text-align: center;
 }
 
 .container {
@@ -41,19 +54,3 @@ footer {
 .remove-margin {
   margin: 0 !important;
 }
-/*
-@media (min-height: 400px) {
-  footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-}
-
-@media (min-height: 500px) {
-  footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-}*/
