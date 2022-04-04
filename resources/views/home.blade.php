@@ -1,3 +1,11 @@
+<!--
+Programmer name: Ms. Mariyam Malika Asim, TP056480, BSc. (Hons) in Computer Science, Asia Pacific University (APU), Technology Park Malaysia
+Program name: home.blade.php
+Description: To provide the contents for home page in website.
+First written on: 28/07/2021
+Edited on: 13/10/2021
+-->
+
 @extends('layout.landing')
 
 @section('title')
@@ -6,6 +14,7 @@ Home
 
 @section('content')
 
+<!-- Home content -->
 <div class="pusher">
   <div class="ui vertical masthead center aligned segment home-header">
 
@@ -37,11 +46,11 @@ Home
         <h3 class="ui horizontal divider header">
         About Orc
       </h3>
-      <p>Development teams set out to push new software versions continuously into production. Developers rely deeply on version control systems such as Git for constant software deliveries. However, Git involves a lot of steps for a single deployment. Even if developers document the entire process, there is the possibility of missing a step or incorrect execution, leading to an error prone and time-consuming task. Orc utilizes Continuous Deployment (CD) where any specific branch committed to the Git repository is pushed for production after testing and containerization of software using Docker. A dedicated CD tool involving both Git and containers can send builds to deployment in a single step, providing a faster and consistent deployment workflow with greater results.</p>
+      <p>Development teams set out to push new software versions continuously into production. Developers have relied deeply on version control systems such as Git for constant software deliveries. However, Git involves a lot of steps for a single deployment. Even if developers document the entire process, there is the risk of skipping a step or incorrect execution of software, leading to an error-prone and time-consuming task. Orc utilizes both Git and containers that can send builds to deployment in a single step, providing a faster and consistent deployment workflow with greater results.</p>
       <h3 class="ui horizontal divider header">
         For Development Teams
       </h3>
-      <p>The target users involved in utilizing the website are development teams having at least developers or DevOps practitioners as these groups can greatly benefit from Orc. In development teams, the head of development will have access to the admin account and create user accounts for others.</p>
+      <p>The target users involved in utilizing the website are development teams having at least developers or DevOps practitioners as these groups can greatly benefit from Orc. In development teams, the head of development will be using an admin account and create staff accounts for others.</p>
     </div>
       </div>
     </div>

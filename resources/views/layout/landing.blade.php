@@ -1,3 +1,11 @@
+<!--
+Programmer name: Ms. Mariyam Malika Asim, TP056480, BSc. (Hons) in Computer Science, Asia Pacific University (APU), Technology Park Malaysia
+Program name: landing.blade.php
+Description: To provide the layout for home page, login page and register page.
+First written on: 28/07/2021
+Edited on: 13/10/2021
+-->
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,3 +1,11 @@
+<!--
+Programmer name: Ms. Mariyam Malika Asim, TP056480, BSc. (Hons) in Computer Science, Asia Pacific University (APU), Technology Park Malaysia
+Program name: master.blade.php
+Description: To provide the layout for dashboard page, edit project page, profile page and staff page.
+First written on: 28/07/2021
+Edited on: 24/09/2021
+-->
+
 <!DOCTYPE html>
 <html>
 <head>

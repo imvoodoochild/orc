@@ -1,5 +1,11 @@
 <?php
 
+// Programmer name: Ms. Mariyam Malika Asim, TP056480, BSc. (Hons) in Computer Science, Asia Pacific University (APU), Technology Park Malaysia
+// Program name: web.php
+// Description: To provide the routes of all pages in website.
+// First written on: 28/07/2021
+// Edited on: 13/10/2021
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;

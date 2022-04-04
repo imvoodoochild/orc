@@ -1,3 +1,11 @@
+<!--
+Programmer name: Ms. Mariyam Malika Asim, TP056480, BSc. (Hons) in Computer Science, Asia Pacific University (APU), Technology Park Malaysia
+Program name: register.blade.php
+Description: To provide the contents for register page in website.
+First written on: 28/07/2021
+Edited on: 13/10/2021
+-->
+
 @extends('layout.landing')
 
 @section('title')
@@ -6,7 +14,7 @@ Register
 
 @section('content')
 
-<!-- register content -->
+<!-- Register content -->
 <div class="ui secondary pointing menu remove-margin">
     <div class="header item">
       <img src = "images\logo.svg" alt="Logo SVG"/>

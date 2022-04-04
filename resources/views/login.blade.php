@@ -1,3 +1,11 @@
+<!--
+Programmer name: Ms. Mariyam Malika Asim, TP056480, BSc. (Hons) in Computer Science, Asia Pacific University (APU), Technology Park Malaysia
+Program name: login.blade.php
+Description: To provide the contents for login page in website.
+First written on: 28/07/2021
+Edited on: 12/10/2021
+-->
+
 @extends('layout.landing')
 
 @section('title')
