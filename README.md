@@ -19,6 +19,6 @@ Step 5: Open another command-prompt window. Type the command below to run the re
 
 php artisan queue:work
 
-Step 5: Once the PHP server has started, type the web URL below on a browser to interact with the website:
+Step 5: Once the PHP server has started, type the web URL below on a browser to interact with the url:
 
 http://localhost:8000/
