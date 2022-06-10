@@ -3,7 +3,7 @@ PHP, Laravel, Docker, MySQL
 
 ## Steps to Run the System
 
-Step 1: Unzip the folder named "orc" inside the zipped file to the path of your choice.
+Step 1: Clone the repository to the path of your choice.
 
 Step 2: Open command prompt or any command-line interface and change the directory to go inside the folder.
 
