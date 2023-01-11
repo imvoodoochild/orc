@@ -3,7 +3,7 @@ PHP, Laravel, Docker, MySQL
 
 ## Steps to Run the System
 
-Step 1: Unzip the folder named "orc" inside the zipped file to the path of your choice. Then, create a .env file in this folder and copy the contents of .env.example file to .env file. Next, set up MySQL with the configurations given in file and create a new schema inside called 'orc'. Make sure that MySQL server is running. 
+Step 1: Clone "orc" to the path of your choice. Then, create a .env file in this folder and copy the contents of .env.example file to .env file. Next, set up MySQL with the configurations given in file and create a new schema called 'orc'. Make sure that MySQL server is running. 
 
 Step 2: Open Docker Desktop and ensure that the Docker daemon status is running. 
 
